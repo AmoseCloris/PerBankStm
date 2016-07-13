@@ -9,6 +9,7 @@ import implement.payOverImpl;
 
 
 
+
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -72,20 +73,28 @@ public class payOverServlet extends HttpServlet {
 		}
 		else if("update".equals(method))
 		{
-
+			
+			
 			payOver.setName(request.getParameter("name"));
 			payOver.setAddr(request.getParameter("addr"));
 			payOver.setAccount(request.getParameter("account1"));
 			payOver.setSwift(request.getParameter("swift"));
 			payOver.setStaAccoName(request.getParameter("staAccoName"));
 			payOver.setStaAccoAddr(request.getParameter("staAccoAddr"));
+			System.out.println("-------------------------------");
+			System.out.println(payOver.toString());
 			payDao.updatepayOver(payOver);
-			System.out.println("---------------------------------");
-			System.out.println(payOver);
+			request.getRequestDispatcher("/payover/payOverList.jsp").forward(request, response);
 			
-			payDao.addpayOver(payOver);
-		//	 request.getRequestDispatcher("/payover/payOverList.jsp").forward(request, response);
-			response.sendRedirect("/PerBankStm/payover/payOverList.jsp");
+
+		}else if("update1".equals(method))
+		{
+			ArrayList<PayOver> gs = payDao.payOverSea(request.getParameter("account"));
+			payOver=gs.get(0);
+			request.setAttribute("payOver", payOver );
+			request.getRequestDispatcher("/payover/payOverUpdate.jsp").forward(request, response);
+			
+			
 		}
 		
 		else if("delete".equals(method))
@@ -98,30 +107,7 @@ public class payOverServlet extends HttpServlet {
 		}
 		response.sendRedirect("/PerBankStm/payover/payOverList.jsp");
 		}
-		
-		
-		else if("informationTrans".equals(method))
-		{
-			ArrayList<PayOver> gs = payDao.payOverSea(request.getParameter("account"));
-			payOver=gs.get(0);
 
-//			payOver.setName(request.getParameter("name"));
-//			payOver.setAddr(request.getParameter("addr"));
-//			payOver.setAccount(request.getParameter("account1"));
-//			payOver.setSwift(request.getParameter("swift"));
-//			payOver.setStaAccoName(request.getParameter("staAccoName"));
-//			payOver.setStaAccoAddr(request.getParameter("staAccoAddr"));
-				
-	        request.setAttribute("payOver", payOver );
-//	 request.setAttribute("account",);
-//	 request.setAttribute("addr", );
-//	 request.setAttribute("swift", );
-//	 request.setAttribute("staAccoName",  );
-//	request.setAttribute("staAccoAddr", );
-
-	 System.out.println(""+gs.get(0).getAccount()+""+gs.get(0).getName());
-	 request.getRequestDispatcher("/payover/payOverUpdate.jsp").forward(request, response);
-		}
 		
 	}
 

@@ -72,8 +72,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 		<tr>
 			<td colspan="7" class="center">
-			<a href="payOverList.jsp"><input value="查询" type="button"></input></a>
-			 <a href="payOverAdd.jsp"><input value="添加" type="button" ></input></a>
+			<a href="/PerBankStm/payover/payOverList.jsp"><input value="查询" type="button"></input></a>
+			 <a href="/PerBankStm/payover/payOverAdd.jsp"><input value="添加" type="button" ></input></a>
 			  <input type="button" value="修改"  onclick="updatePayOver()"/>
 			  <input type="button" value="删除" onclick="delPayOver()"/></td>
 

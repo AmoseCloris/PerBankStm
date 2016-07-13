@@ -194,7 +194,7 @@ function updatePayOver()
 		for (var i = 0; i < payids.length; i++) {
 			if (payids[i].checked) {
 				var account=payids[i].value;
-				location.href="/PerBankStm/payOverServlet?method=update&account="+account;
+				location.href="/PerBankStm/payOverServlet?method=update1&account="+account;
 			
 			}
 		}
@@ -230,8 +230,7 @@ function delPayOver()
 function updateChange()
 {
 
-	if (checkName() == 1 && flag== 1  &&
-			(checkSwift()==1||(checkStaAccoAddr()==1&&checkStaAccoName()==1)) ) {
+	if (checkName() == 1&&(checkSwift()==1||(checkStaAccoAddr()==1&&checkStaAccoName()==1)) ) {
 		//location.href="/PerBankStm/payOverServlet?method=update";
 		$("#form").submit();
 	} else {

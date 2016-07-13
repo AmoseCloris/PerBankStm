@@ -129,9 +129,10 @@ public class payOverImpl implements payOverDao {
 			ptmp.setString(4, payOver.getSwift());
 			ptmp.setString(5, payOver.getStaAccoName());
 			ptmp.setString(6, payOver.getStaAccoAddr());
-		//	ptmp.setString(7, payOver.getAccount());
+			ptmp.setString(7, payOver.getAccount());
 		//	ptmp.setInt(6, payOver.getPayOverId());
-			
+			System.out.println("+++++++++++++++++++++++++++++++++");
+			System.out.println(ptmp.toString());
 			ptmp.executeUpdate();
 			
 		} catch (SQLException e) {
