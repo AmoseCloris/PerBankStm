@@ -1,15 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%String path = request.getContextPath(); %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ÎÞ±êÌâÎÄµµ</title>
+<title></title>
 <link type="text/css" rel="stylesheet" href="css/head.css">
-<script type="text/jscript">
 
-</script>
+<script type="text/jscript"></script>
+<script type="text/javascript" src="<%=path %>/js/head.js"></script>
+
 </head>
 <body>
 <div id="head">
@@ -17,26 +19,31 @@
 <div class="rightcontent">
 	<ul>
     <li><a>English</a></li>
-    <li><a>ÐÂÎÅÖÐÐÄ</a></li>
-    <li><a>ÈË²ÅÕÐÆ¸</a></li>
-    <li><a>·ÖÐÐÆµµÀ</a></li>
-    <li><a>Õ¾µãÍøÂç</a></li>
+    <li><a>æ–°é—»ä¸­å¿ƒ</a></li>
+    <li><a>äººæ‰æ‹›è˜</a></li>
+    <li><a>åˆ†è¡Œé¢‘é“</a></li>
+    <li><a>ç«™ç‚¹ç½‘ç»œ</a></li>
     </ul>
     <img  id="phonepic" src="images/phonenum.png"/>
 </div>
+
+<c:if test="${name!=null && name!='' }">
+<div>æ¬¢è¿Ž<span style="color:red">${name}</span>å…ˆç”Ÿ/å¥³å£«æ¥åˆ°ä¸ªäººç½‘é“¶ç³»ç»Ÿ</div>
+<span><a href="<%=path%>/servlet?method=logout" > æ³¨é”€</a></span>
+</c:if>
+
 <div class="navigation">
 	<ul>
-    	<li><a href="index.jsp" target="_parent">µ¼&nbsp;&nbsp;&nbsp;º½</a></li>
-        <li><a href="<%=path %>/payover/payOverList.jsp" target="_parent">¾³ÍâÊÕ¿îÈË</a></li>
-        <li><a href="maintain.jsp" target="_parent">ÕË»§Î¬»¤</a></li>
-        <li><a href="transfer_accounts.jsp" target="_parent">¾³Íâ×ªÕË</a></li>
-        <li><a href="query.jsp" target="_parent">½»Ò×²éÑ¯</a></li>
-        <li><a href="loan_administration.jsp" target="_parent">´û¿î¹ÜÀí</a></li>
-        <li><a href="splashID.jsp" target="_parent">ÃÜÂë¹ÜÀí</a></li>
-        <li><a href="contact_us.jsp" target="_parent">ÁªÏµÎÒÃÇ</a></li>
+    	<li><a href="<%=path %>/index.jsp" target="_parent">å¯¼&nbsp;&nbsp;&nbsp;èˆª</a></li>
+        <li><a href="<%=path %>/payover/payOverList.jsp" target="_parent">å¢ƒå¤–æ”¶æ¬¾äºº</a></li>
+        <li><a href="<%=path %>/account/accountList.jsp" target="_parent">è´¦æˆ·ç»´æŠ¤</a></li>
+        <li ><a href="<%=path%>/trans/transfer_accounts.jsp" target="_parent" >å¢ƒå¤–è½¬è´¦</a></li>
+        <li><a href="<%=path%>/query/query.jsp" target="_parent">äº¤æ˜“æŸ¥è¯¢</a></li>
+        <li><a href="splashID.jsp" target="_parent">å¯†ç ç®¡ç†</a></li>
+        <li><a href="contact_us.jsp" target="_parent">è”ç³»æˆ‘ä»¬</a></li>
         <div id="position">
         <a href="login.jsp" target="_parent"><img src="images/login.png"></a>
-        <a href="login.jsp" target="_parent"><img src="images/login1.png"></a>
+ <a href="login.jsp" target="_parent"><img src="images/login1.png"></a>
         </div>
     </ul>
 </div>

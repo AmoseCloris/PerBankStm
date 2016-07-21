@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import Dao.payOverDao;
 import model.PayOver;
-import model.Product;
 import util.Util;
 
 public class payOverImpl implements payOverDao {
@@ -19,8 +18,7 @@ public class payOverImpl implements payOverDao {
 		sql.append("select name,addr,account,swift,staAccoName,staAccoAddr from t_payover");
 
 		PreparedStatement ptmt = null;
-		int count = 0;
-		int index = 1;
+
 		ArrayList<PayOver> gs = new ArrayList<PayOver>();
 
 		try {
@@ -83,20 +81,22 @@ public class payOverImpl implements payOverDao {
 		
 		Connection connection = Util.getConnection();
 		StringBuffer strsql = new StringBuffer();
-		strsql.append("insert into t_payover(name,addr,account,swift,staAccoName,staAccoAddr) ");
-		strsql.append(" values(?,?,?,?,?,?)");
+		strsql.append("insert into t_payover(name,addr,account,swift,staAccoName,staAccoAddr,amount) ");
+		strsql.append(" values(?,?,?,?,?,?,?)");
 
 		PreparedStatement ptmp = null;
 		
 	try {
 	
 			ptmp = connection.prepareCall(strsql.toString());
+			
 			ptmp.setString(1, payOver.getName());
 			ptmp.setString(2, payOver.getAddr());
 			ptmp.setString(3, payOver.getAccount());
 			ptmp.setString(4, payOver.getSwift());
 			ptmp.setString(5, payOver.getStaAccoName());
 			ptmp.setString(6, payOver.getStaAccoAddr());
+			ptmp.setString(7, payOver.getAmount());
 			
 			ptmp.executeUpdate();
 
@@ -114,7 +114,8 @@ public class payOverImpl implements payOverDao {
 	{
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("update t_payover set name=?,account=?,addr=?,swift=?,staAccoName=?,staAccoAddr=? where account=?");
+		sql.append("update t_payover set name=?,account=?,addr=?,swift=?,staAccoName=?,staAccoAddr=?,amount=?");
+		sql.append(" where account= "+Util.account_old);
 		Connection connection = Util.getConnection();
 
 		PreparedStatement ptmp = null;
@@ -129,10 +130,8 @@ public class payOverImpl implements payOverDao {
 			ptmp.setString(4, payOver.getSwift());
 			ptmp.setString(5, payOver.getStaAccoName());
 			ptmp.setString(6, payOver.getStaAccoAddr());
-			ptmp.setString(7, payOver.getAccount());
-		//	ptmp.setInt(6, payOver.getPayOverId());
-			System.out.println("+++++++++++++++++++++++++++++++++");
-			System.out.println(ptmp.toString());
+			ptmp.setString(7, payOver.getAmount());
+	
 			ptmp.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -146,18 +145,19 @@ public class payOverImpl implements payOverDao {
 	public void deletpayOver(String account)
 	{
 		Connection conn = Util.getConnection();
-		
+
 		String sqlString = "delete  from t_payover where account=?";
 
 		PreparedStatement ptmp;
 		try {
 			ptmp = conn.prepareStatement(sqlString);
-			ptmp.setString(1,account);
+			ptmp.setString(1, account);
 			ptmp.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 
 	}
 	
@@ -186,4 +186,6 @@ public class payOverImpl implements payOverDao {
 
 		return false;
 	}
+
+
 }

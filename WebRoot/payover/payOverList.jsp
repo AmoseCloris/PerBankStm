@@ -18,7 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path %>/jquery/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="<%=path %>/js/payover.js" charset="utf-8"></script>
 </head>
-
 <body>
 
 	<div id="container">
@@ -36,11 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 <form id="form" method="post"  name="form" action="">
 				
 					<table id="tab">
-						<tr>
-							<td class="right" colspan="3">请输入要查询的账户:</td>
-							<td class="left" colspan="3"><input type="text"
-								name="account" id="account" size="50" /></td>
-						</tr>
+
 						<tr>
 							<td width="90"><input type="checkbox" name="payid" id="payid" onclick="allSelected()"></td>
 							<td width="118">收款人账号</td>

@@ -13,7 +13,7 @@
 </head>
 
 <body onload="setInterval()">
-<h4 id="change"><span id="totalSecond">5</span>秒后自动跳转到首页！</h4>
+<h4 id="change"><span id="totalSecond">2</span>秒后自动跳转到首页！</h4>
  	<script language="javascript">
 		var second = document.getElementById('totalSecond').textContent; 
 		if (navigator.appName.indexOf("Explorer") > -1)  { 
@@ -24,7 +24,7 @@
 			setInterval("redirect()", 1000);
 			function redirect() { 
 			if (second < 0) { 
-			location.href = 'index.html'; 
+			location.href = 'index.jsp'; 
 			} else { 
 				if (navigator.appName.indexOf("Explorer") > -1) { 
 				document.getElementById('totalSecond').innerText = second--; 
@@ -35,15 +35,31 @@
 }
  </script>
 <div id="container">
-	<iframe id="header" src="head.jsp" width="980" height="136" frameborder="0" scrolling="no" marginwidth="0px;"></iframe>
-   	<img src="images/pic1.png">
-    <div id="content">
-    <table>
-    	<tr><td class="text1">祝贺！！</td></tr>
-    	<tr><td class="text1">你已成功登录！</td></tr>
-    	<tr><td class="text1">欢迎来到博创银行</td></tr>
-    </table>
+		<%
+			if (session.getAttribute("username") == null) {
+		%>
+<!-- 	<iframe id="header" src="head.jsp" width="980" height="136" frameborder="0" scrolling="no" marginwidth="0px;"></iframe> -->
+<!--    	<img src="images/pic1.png"> -->
+<!--     <div id="content"> -->
+<!--     <table> -->
+<!--     	<tr><td class="text1">祝贺！！</td></tr> -->
+<!--     	<tr><td class="text1">你已成功登录！</td></tr> -->
+<!--     	<tr><td class="text1">欢迎来到博创银行</td></tr> -->
+<!--     </table> -->
+    <%
+}else{
+     
+ %>
+ 
+ <tr>
+ <td>
+ ${name}<%=new java.util.Date() %>登陆成功！ }
+ </td>
+ </tr>
+ <%} %>
     </div>
+    
+ 
    	<iframe id="footer" src="foot.jsp" width="980" height="136" frameborder="0" scrolling="no marginwidth="0px;"></iframe>
 </div>
 </body>

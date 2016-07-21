@@ -3,7 +3,6 @@ package Dao;
 import java.util.ArrayList;
 
 import model.PayOver;
-import model.Product;
 
 public interface payOverDao {
 	
@@ -18,5 +17,6 @@ public interface payOverDao {
 	public void deletpayOver(String account);
 	
 	public boolean checkAccount(String account);
+	
 
 }

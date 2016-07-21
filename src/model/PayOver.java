@@ -2,7 +2,7 @@ package model;
 
 public class PayOver {
 
-	private int payOverId;
+
 	private String name;
 	private String swift;
 	private String account;
@@ -10,6 +10,7 @@ public class PayOver {
 	private String staAccoAddr;
 	private String addr;
 	private String cusidString;
+	private String amount;
 
 	public String getName() {
 		return name;
@@ -68,23 +69,12 @@ public class PayOver {
 	}
 
 
-	public int getPayOverId() {
-		return payOverId;
+	public String getAmount() {
+		return amount;
 	}
 
-	public void setPayOverId(int payOverId) {
-		this.payOverId = payOverId;
+	public void setAmount(String amount) {
+		this.amount = amount;
 	}
-
-	@Override
-	public String toString() {
-		return "PayOver [payOverId=" + payOverId + ", name=" + name
-				+ ", swift=" + swift + ", account=" + account
-				+ ", staAccoName=" + staAccoName + ", staAccoAddr="
-				+ staAccoAddr + ", addr=" + addr + ", cusidString="
-				+ cusidString + "]";
-	}
-	
-	
 
 }

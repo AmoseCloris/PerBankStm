@@ -1,4 +1,4 @@
-﻿var flag=0;
+﻿var flag = 0;
 
 $(function() {
 	var $div_li = $("div#select ul li");
@@ -9,16 +9,22 @@ $(function() {
 	})
 })
 
+
+function re()
+{	
+		location.href="http://localhost:8080/PerBankStm/payover/payOverList.jsp";
+}
+
 function checkaccount() {
 	var reg = /^\d{8}/;
 	var account1 = $("#account1").val();
-	if (account1 == null || account1 == "" || account1 == undefined||(!reg.test(account1))) {
+	if (account1 == null || account1 == "" || account1 == undefined
+			|| (!reg.test(account1))) {
 
 		$("#accountid").html("<font color='red'>请至少输入8位数字</font>");
-		flag=0;
-	} else 
-	{
-		//alert("hah");
+		flag = 0;
+	} else {
+
 		$.ajax({
 			type : "POST",
 			url : "/PerBankStm/payOverServlet",
@@ -27,14 +33,14 @@ function checkaccount() {
 				if (msg == 'yes') {
 					$("#accountid").html("<font color='red'>账户已被注册</font>");
 
-					flag=0;
+					flag = 0;
 				} else if (msg == 'no') {
 					$("#accountid").html("<font color='green'>√</font>");
-					flag=1;
+					flag = 1;
 				}
 			}
 		});
-		
+
 	}
 
 }
@@ -52,14 +58,13 @@ function checkName() {
 		return 1;
 	}
 }
-
 function checkSwift() {
 	var reg = /[0-9a-zA-Z]{11,11}/;
 	var swift = $("#swift").val();
-	if ((!reg.test(swift))||swift.length!=11) {
+	if ((!reg.test(swift)) || swift.length != 11) {
 		$("#swiftid").html(" <font color='red'>请输入数字英文11位</font>");
-return 0;
-	} else if((checkStaAccoAddr() == 0 && checkStaAccoName() == 0)){
+		return 0;
+	} else if ((checkStaAccoAddr() == 0 && checkStaAccoName() == 0)) {
 		$("#swiftid").html(" <font color='green'>√</font>");
 		return 1;
 	}
@@ -72,7 +77,7 @@ function checkAddr() {
 	if (!reg.test(addr)) {
 		$("#addrid").html(" <font color='red'>请输入英文</font>");
 
-	} else if(checkSwift() == 0){
+	} else if (checkSwift() == 0) {
 		$("#addrid").html(" <font color='green'>√</font>");
 
 	}
@@ -85,7 +90,7 @@ function checkStaAccoName() {
 	if (!reg.test(staAccoName)) {
 		$("#staAccoNameid").html(" <font color='red'>请输入英文</font>");
 		return 0;
-	} else if(checkSwift() == 0) {
+	} else if (checkSwift() == 0) {
 		$("#staAccoNameid").html(" <font color='green'>√</font>");
 		return 1;
 	}
@@ -136,16 +141,16 @@ function sub() {
 			&& (checkSwift() == 1 || (checkStaAccoAddr() == 1 && checkStaAccoName() == 1))) {
 		alert("添加成功");
 		$("#form").submit();
-		//window.location.href = "payOverList.jsp";
+		// window.location.href = "payOverList.jsp";
 	} else {
 		return false;
 	}
 }
 
 function allSelected() {
-	//获取属性框id
+	// 获取属性框id
 	var payid = document.getElementById("payid");
-	//获取具体属性放入复选框name
+	// 获取具体属性放入复选框name
 	var payids = document.getElementsByName("payids");
 	if (payid.checked) {
 		for (var i = 0; i < payids.length; i++) {
@@ -177,8 +182,7 @@ function oneSelected() {
 
 }
 
-function updatePayOver()
-{
+function updatePayOver() {
 	var payids = document.getElementsByName("payids");
 	var n = 0;
 	for (var i = 0; i < payids.length; i++) {
@@ -190,52 +194,51 @@ function updatePayOver()
 	if (n == 0) {
 		alert("请选择信息");
 		return;
-	} else if(n == 1) {
+	} else if (n == 1) {
 		for (var i = 0; i < payids.length; i++) {
 			if (payids[i].checked) {
-				var account=payids[i].value;
-				location.href="/PerBankStm/payOverServlet?method=update1&account="+account;
-			
+				var account = payids[i].value;
+				location.href = "/PerBankStm/payOverServlet?method=update1&account="
+						+ account;
+
 			}
 		}
-	}else if(n>1)
-	{
+	} else if (n > 1) {
 		alert("请选择一条信息");
-	
+
 	}
-	
+
 }
 
-function delPayOver()
-{
+function delPayOver() {
 	var payids = document.getElementsByName("payids");
 	var n = 0;
 	var arrayObj = new Array();
 	for (var i = 0; i < payids.length; i++) {
 		if (payids[i].checked) {
-			arrayObj[i]=payids[i].value;
+			arrayObj[i] = payids[i].value;
 			n++;
 		}
 
 	}
-	alert(arrayObj);
 	if (n == 0) {
 		alert("请选择信息");
 		return;
-	} else if(n>=1) {
-		location.href="/PerBankStm/payOverServlet?method=delete&arrayObj="+arrayObj;
+	} else if (n >= 1) {
+		location.href = "/PerBankStm/payOverServlet?method=delete&arrayObj="
+				+ arrayObj;
 	}
+
 }
 
-function updateChange()
-{
+function updateChange() {
 
-	if (checkName() == 1&&(checkSwift()==1||(checkStaAccoAddr()==1&&checkStaAccoName()==1)) ) {
-		//location.href="/PerBankStm/payOverServlet?method=update";
+	if (checkName() == 1
+			&& (checkSwift() == 1 || (checkStaAccoAddr() == 1 && checkStaAccoName() == 1))) {
+		// location.href="/PerBankStm/payOverServlet?method=update";
 		$("#form").submit();
 	} else {
 		return false;
 	}
-	
-	
-	}
+
+}

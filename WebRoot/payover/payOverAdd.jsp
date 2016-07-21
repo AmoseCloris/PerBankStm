@@ -67,14 +67,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
  
             <tr >
-            	<td id="swift_dis" style="width: 238 px"  class="right" colspan="3">收款人开户行SWIFT代码:</td>
+            	<td id="swift_dis" style="width: 238 px"  class="right" colspan="3">收款人开户行SWIFT代码:<font color="red" size="3">*</font></td>
                 <td id="swift_dis1" style=" width:383px" class="left" colspan="3" >
                 <input type="text" name="swift" size="50" id="swift" onblur="checkSwift()"/>
                 <span id="swiftid"></span>
                  </td> 
             </tr>
             <tr >
-            	<td id="name_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行名称:</td>
+            	<td id="name_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行名称:<font color="red" size="3">*</font></td>
                 <td id="name_dis1" style="display:none;width:383px" class="left" colspan="3"  >
                 <input type="text" name="staAccoName" size="50" id="staAccoName"onblur="checkStaAccoName()"/>
                  <span id="staAccoNameid"></span>
@@ -82,9 +82,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
             
              <tr >
-            	<td id="addr_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行地址:</td>
+            	<td id="addr_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行地址:<font color="red" size="3">*</font></td>
                 <td  id="addr_dis1" style="display:none;width:383px"  class="left" colspan="3">
-                <input type="text" name="counstaAccoAddrtnum" size="50" id="staAccoAddr"onblur="checkStaAccoAddr()"/>
+                <input type="text" name="staAccoAddr" size="50" id="staAccoAddr"onblur="checkStaAccoAddr()"/>
                  <span id="staAccoAddrid"></span>
                  </td>
             </tr>
@@ -96,8 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<td colspan="3" class="right"> 
             	<input type="submit" value="添加"  onclick="sub()"/></td>
                 <td colspan="3" class="left">
-                <input type="reset" value="返回"/></td>
-            </tr>
+                <input type="reset" value="返回" onclick="re()"/></td>
+            </tr> 
         </div>
          	
         </div>

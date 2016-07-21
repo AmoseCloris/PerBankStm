@@ -16,12 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-<% String name=request.getParameter("name");
-   System.out.println("name is "+name);
-   String account=request.getParameter("account");
-   System.out.println("account is "+account);
-   
-%>
+
 <div id="container">
 	<iframe id="header" src="<%=path %>/head.jsp" width="980" height="136" frameborder="0" scrolling="no" marginwidth="0px;"></iframe>
     <div id="content">
@@ -73,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
  
             <tr >
-            	<td id="swift_dis" style="width: 238 px"  class="right" colspan="3">收款人开户行SWIFT代码:</td>
+            	<td id="swift_dis" style="width: 238 px"  class="right" colspan="3">收款人开户行SWIFT代码:<font color="red" size="3">*</font></td>
                 <td id="swift_dis1" style=" width:383px" class="left" colspan="3" >
                 <input type="text" name="swift" size="50" id="swift" onblur="checkSwift()" 
                 value="${payOver.swift}">
@@ -81,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </td> 
             </tr>
             <tr >
-            	<td id="name_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行名称:</td>
+            	<td id="name_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行名称:<font color="red" size="3">*</font></td>
                 <td id="name_dis1" style="display:none;width:383px" class="left" colspan="3"  >
                 <input type="text" name="staAccoName" size="50" id="staAccoName" 
                 onblur="checkStaAccoName()"  value="${payOver.staAccoName}" />
@@ -90,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
             
              <tr >
-            	<td id="addr_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行地址:</td>
+            	<td id="addr_dis" style="display:none;width: 238 px" class="right" colspan="3">收款人开户行地址:<font color="red" size="3">*</font></td>
                 <td  id="addr_dis1" style="display:none;width:383px"  class="left" colspan="3">
                 <input type="text" name="staAccoAddr" size="50" id="staAccoAddr"
                 onblur="checkStaAccoAddr()"  value="${payOver.staAccoAddr}" />
@@ -105,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<td colspan="3" class="right"> 
             	<input type="button" value="修改"  onclick="updateChange()"/></td>
                 <td colspan="3" class="left">
-                <input type="reset" value="返回"/></td>
+                <input type="reset" value="返回" onclick="re()"/></td>
             </tr>
         </div>
          	

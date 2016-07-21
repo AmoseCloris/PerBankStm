@@ -11,8 +11,9 @@ public class Util {
 	private static final String url = "jdbc:mysql://127.0.0.1/a?useUnicode=true&characterEncoding=utf-8";
 	private static final String user = "root";
 	private static final String password = "";
-
+	public static String account_old;
 	private static Connection conn;
+	public static String trans_account_old;
 
 	// 静态快是执行最早的
 	static {
@@ -83,4 +84,6 @@ public class Util {
 		}
 		return true;
 	}
+
+	
 }
